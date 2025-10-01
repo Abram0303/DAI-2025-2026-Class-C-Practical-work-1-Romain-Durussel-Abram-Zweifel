@@ -4,12 +4,11 @@ import ch.heigvd.commands.Grayscale;
 import ch.heigvd.commands.Invert;
 import ch.heigvd.commands.Rotate;
 
-import java.io.File;
 import picocli.CommandLine;
 
 @CommandLine.Command(
         description = "A small CLI with subcommands to process images.",
-        version = "1.0.0",
+        version = "1.1",
         showDefaultValues = true,
         subcommands = {
                 Grayscale.class,
@@ -21,8 +20,12 @@ import picocli.CommandLine;
 )
 
 public class ImageProcessor {
+
+    @CommandLine.Mixin IOOptions io;
+
     public static void main(String[] args)
     {
-        System.out.println("Hello, World");
+        int exitCode = new CommandLine(new ImageProcessor()).execute(args);
+        System.exit(exitCode);
     }
 }
