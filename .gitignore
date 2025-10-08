@@ -10,6 +10,9 @@
 *.iml
 *.ipr
 
+# Local tests
+src/main/java/ch/heigvd/TestImages.java
+
 # Editor-based HTTP Client requests
 .idea/httpRequests/
 
