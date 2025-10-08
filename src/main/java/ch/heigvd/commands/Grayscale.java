@@ -9,7 +9,10 @@ import java.awt.image.Raster;
 import java.awt.image.WritableRaster;
 import java.util.concurrent.Callable;
 
-@CommandLine.Command(name = "grayscale", description = "Convert an image to grayscale.")
+@CommandLine.Command(
+        name = "grayscale",
+        description = "Convert an image to grayscale."
+)
 
 public class Grayscale implements Callable<Integer> {
 

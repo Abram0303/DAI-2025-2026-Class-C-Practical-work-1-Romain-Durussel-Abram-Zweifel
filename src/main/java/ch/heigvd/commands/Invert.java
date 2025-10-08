@@ -9,7 +9,10 @@ import java.awt.image.Raster;
 import java.awt.image.WritableRaster;
 import java.util.concurrent.Callable;
 
-@CommandLine.Command(name = "invert", description = "Invert the color in the image.")
+@CommandLine.Command(
+        name = "invert",
+        description = "Invert the color in the image."
+)
 
 public class Invert implements Callable<Integer> {
 
