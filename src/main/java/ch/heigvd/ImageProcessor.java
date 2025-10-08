@@ -21,7 +21,8 @@ import picocli.CommandLine;
 
 public class ImageProcessor {
 
-    @CommandLine.Mixin IOOptions io;
+    @CommandLine.Mixin
+    public IOOptions io;
 
     public static void main(String[] args)
     {

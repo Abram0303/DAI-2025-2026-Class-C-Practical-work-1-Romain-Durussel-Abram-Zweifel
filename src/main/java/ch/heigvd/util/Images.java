@@ -31,16 +31,11 @@ public class Images {
 
         File output = io.outputFile;
 
-        if (output == null) {
-            output = new File("output.jpg");
-        }
-
         try {
 
             String name = output.getName();
             int dot = name.lastIndexOf('.');
             String format = dot > 0 ? name.substring(dot + 1) : "jpg";
-
 
             if(!ImageIO.write(image, format, output)){
                 throw new RuntimeException("No writer for format: " + format);

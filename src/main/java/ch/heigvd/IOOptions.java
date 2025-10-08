@@ -7,7 +7,7 @@ public class IOOptions {
     @CommandLine.Option(names={"-i","--input"}, required=true)
     public File inputFile;
 
-    @CommandLine.Option(names={"-o","--output"}, required=false, defaultValue = "image/output.jpg")
+    @CommandLine.Option(names={"-o","--output"}, required=true)
     public File outputFile;
 }
 
