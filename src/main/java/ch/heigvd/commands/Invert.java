@@ -55,6 +55,7 @@ public class Invert implements Callable<Integer> {
 
             // Write the output image
             Images.writeImage(imageOut);
+            System.out.println("Colors successfully inverted.");
             return 0;
 
         } catch (Exception e) {
