@@ -8,7 +8,7 @@ import picocli.CommandLine;
 
 @CommandLine.Command(
         description = "A small CLI with subcommands to process images.",
-        version = "1.1",
+        version = "1.2",
         showDefaultValues = true,
         subcommands = {
                 Grayscale.class,

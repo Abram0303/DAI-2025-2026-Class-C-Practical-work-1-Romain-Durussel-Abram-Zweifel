@@ -1,5 +1,15 @@
 ## DAI 2025–2026 - Class C - Practical Work 1
-#### By Romain Durussel & Abram Zweifel
+
+---
+
+## Table of Contents
+- [Project Overview](#project-overview)
+- [Implemented Commands](#implemented-commands)
+- [Build Instructions](#build-instructions)
+- [Usage Examples](#usage-instructions)
+- [Example Results](#example-results)
+- [Authors](#authors)
+- [Use of AI Tools](#use-of-ai-tools-and-external-sources)
 
 ---
 
@@ -7,6 +17,10 @@
 
 In this project, we developed a command-line tool to perform various image processing operations.
 The tool allows users to easily apply transformations to RGB images directly from the terminal.
+
+The purpose of this tool is to make basic image transformations accessible directly from the 
+command line without needing complex image editing software. It supports multiple formats and 
+demonstrates practical use of Java I/O and image processing libraries.
 
 ---
 
@@ -24,18 +38,23 @@ The tool allows users to easily apply transformations to RGB images directly fro
 
 ### Build Instructions
 
-Follow these explicit commands to clone and build the project on your own computer :
+Follow these commands to clone and build the project locally:
 
 1. Clone the repository from GitHub :
-``` git clone https://github.com/Abram0303/DAI-2025-2026-Class-C-Practical-work-1-Romain-Durussel-Abram-Zweifel.git```
-
+```bash
+git clone https://github.com/Abram0303/DAI-2025-2026-Class-C-Practical-work-1-Romain-Durussel-Abram-Zweifel.git
+```
 
 2. Navigate to the project directory :
-``` cd DAI-2025-2026-Class-C-Practical-work-1-Romain-Durussel-Abram-Zweifel```
+``` bash
+cd DAI-2025-2026-Class-C-Practical-work-1-Romain-Durussel-Abram-Zweifel
+```
 
 
-3. Build the project using Maven (ensure you have installed it) :
-```./mvnw clean package```
+3. Build the project using Maven :
+``` bash
+./mvnw clean package
+```
 
 After this step, the generated JAR file will be located in the target/ directory :
 ``` target/ImageProcessor-1.0-SNAPSHOT.jar ```
@@ -49,15 +68,52 @@ After this step, the generated JAR file will be located in the target/ directory
 
 2. Run the desired command with the appropriate arguments. Here are some examples (with inputs at your disposal in the image/input/ folder) :
    - Grayscale conversion:
-     ``` java -jar target/ImageProcessor-1.0-SNAPSHOT.jar -i image/input/input1.jpg -o image/output/output1_grayscale.jpg grayscale```
+   ``` bash
+   java -jar target/ImageProcessor-1.0-SNAPSHOT.jar -i image/input/input1.jpg -o image/output/output1_grayscale.jpg grayscale
+   ```
    - Color inversion:
-     ``` java -jar target/ImageProcessor-1.0-SNAPSHOT.jar -i image/input/input1.jpg -o image/output/output1_invert.jpg invert```
+   ``` bash
+   java -jar target/ImageProcessor-1.0-SNAPSHOT.jar -i image/input/input1.jpg -o image/output/output1_invert.jpg invert
+   ```
    - Image rotation:
-     ``` java -jar target/ImageProcessor-1.0-SNAPSHOT.jar -i image/input/input1.jpg -o image/output/output1_rotate.jpg rotate -a 90```
+   ``` bash
+   java -jar target/ImageProcessor-1.0-SNAPSHOT.jar -i image/input/input1.jpg -o image/output/output1_rotate.jpg rotate -a 90
+   ```
    - Help command:
-     ``` java -jar target/ImageProcessor-1.0-SNAPSHOT.jar -h help```
+   ``` bash
+   java -jar target/ImageProcessor-1.0-SNAPSHOT.jar help
+   ```
    - Version command:
-     ``` java -jar target/ImageProcessor-1.0-SNAPSHOT.jar -V version```
+   ``` bash
+   java -jar target/ImageProcessor-1.0-SNAPSHOT.jar version
+   ```
+
+3. **From IntelliJ IDEA**
+    - Open the project in IntelliJ.
+    - Use the *Run ImageProcessor* configuration to launch the CLI.
+    - Use the *Package JAR* configuration to build the executable JAR. 
+      - Once the build is complete, you can run the CLI directly:
+        ```java -jar target/ImageProcessor-1.0-SNAPSHOT.jar -h```
+
+---
+
+### Example Results
+
+The following examples show the transformations applied to sample images available in the `image/input/` folder.
+
+| Command | Input | Output |
+|----------|--------|--------|
+| `grayscale` | ![input1](image/input/input1.jpg) | ![output1](image/output/output1_grayscale.jpg) |
+| `invert` | ![input2](image/input/input2.png) | ![output2](image/output/output2_invert.png) |
+| `rotate -a 90` | ![input2](image/input/input2.png) | ![output3](image/output/output2_rotate.png) |
+
+---
+
+### Authors
+- **Romain Durussel**
+- **Abram Zweifel**
+
+HEIG-VD, Class C, 2025–2026
 
 ---
 
