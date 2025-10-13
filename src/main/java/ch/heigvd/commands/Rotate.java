@@ -36,6 +36,7 @@ public class Rotate implements Callable<Integer> {
             int w = imageIn.getWidth();
             int h = imageIn.getHeight();
 
+            // Proposed by ChatGPT, written by RDL & AZL
             Raster rin = imageIn.getRaster();
 
             if (angle != 90 && angle != 180 && angle != 270) {
