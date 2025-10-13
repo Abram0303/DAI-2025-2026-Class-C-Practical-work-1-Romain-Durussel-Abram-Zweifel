@@ -83,10 +83,12 @@ public class Rotate implements Callable<Integer> {
                 default:
                     // Should never happen
                     imageOut = imageIn;
+                    angle = 0;
             }
 
             // Write the output image
             Images.writeImage(imageOut);
+            System.out.println("Image successfully rotated by " + angle + " degrees.");
             return 0;
 
         } catch (Exception e) {

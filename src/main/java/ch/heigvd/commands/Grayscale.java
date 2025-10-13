@@ -58,6 +58,7 @@ public class Grayscale implements Callable<Integer> {
 
             // Write the output image
             Images.writeImage(imageOut);
+            System.out.println("Image successfully converted to grayscale.");
             return 0;
 
         } catch (Exception e) {
