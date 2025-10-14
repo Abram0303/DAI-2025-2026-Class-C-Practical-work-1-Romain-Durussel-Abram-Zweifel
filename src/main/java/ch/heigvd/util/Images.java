@@ -34,7 +34,7 @@ public class Images {
             try (InputStream fis = new FileInputStream(input);
                  BufferedInputStream bis = new BufferedInputStream(fis)) {
 
-                BufferedImage img = ImageIO.read(bis);
+                BufferedImage img = ImageIO.read(bis); // Detect format automatically
                 if (img == null) {
                     throw new IllegalArgumentException("Unsupported or corrupt image: " + input);
                 }
