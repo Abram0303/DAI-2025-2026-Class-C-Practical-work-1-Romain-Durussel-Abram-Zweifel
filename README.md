@@ -71,6 +71,10 @@ After this step, the generated JAR file will be located in the target/ directory
 
 ### Usage Instructions
 
+You can run the CLI tool either from the terminal or from IntelliJ IDEA.
+
+#### From the Terminal
+
 1. Open a terminal and navigate to the project directory.
 
 
@@ -89,19 +93,23 @@ After this step, the generated JAR file will be located in the target/ directory
    ```
    - Help command:
    ``` bash
-   java -jar target/ImageProcessor-1.0-SNAPSHOT.jar help
+   java -jar target/ImageProcessor-1.0-SNAPSHOT.jar -h help
    ```
    - Version command:
    ``` bash
-   java -jar target/ImageProcessor-1.0-SNAPSHOT.jar version
+   java -jar target/ImageProcessor-1.0-SNAPSHOT.jar -V version
    ```
 
-3. **From IntelliJ IDEA**
-    - Open the project in IntelliJ.
-    - Use the *Run ImageProcessor* configuration to launch the CLI.
-    - Use the *Package JAR* configuration to build the executable JAR. 
-      - Once the build is complete, you can run the CLI directly:
-        ```java -jar target/ImageProcessor-1.0-SNAPSHOT.jar -h```
+#### From IntelliJ IDEA
+1. Open the project in IntelliJ.
+
+
+3. Use the *Run ImageProcessor* configuration to launch the CLI. 
+
+
+4. Use the *Package JAR* configuration to build the executable JAR. 
+   - Once the build is complete, you can run the CLI directly:
+           ```java -jar target/ImageProcessor-1.0-SNAPSHOT.jar -h```
 
 ---
 
