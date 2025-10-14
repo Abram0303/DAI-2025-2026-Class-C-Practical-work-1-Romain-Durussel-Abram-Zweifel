@@ -2,7 +2,7 @@
   <configuration default="false" name="ImageProcessor" type="Application" factoryName="Application" nameIsGenerated="true">
     <option name="MAIN_CLASS_NAME" value="ch.heigvd.ImageProcessor" />
     <module name="ImageProcessor" />
-    <option name="PROGRAM_PARAMETERS" value="-i image/input/input3.jpg -o image/output/output3_invert.jpg invert" />
+    <option name="PROGRAM_PARAMETERS" value="-i image/input/input3.png -o image/output/output3_rotate.png rotate -a 90" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="ch.heigvd.*" />

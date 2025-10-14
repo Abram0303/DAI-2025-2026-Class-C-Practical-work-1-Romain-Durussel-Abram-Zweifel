@@ -3,13 +3,21 @@
 ---
 
 ## Table of Contents
+- [Authors](#authors)
 - [Project Overview](#project-overview)
 - [Implemented Commands](#implemented-commands)
 - [Build Instructions](#build-instructions)
 - [Usage Examples](#usage-instructions)
 - [Example Results](#example-results)
-- [Authors](#authors)
 - [Use of AI Tools](#use-of-ai-tools-and-external-sources)
+
+---
+
+### Authors
+- **Romain Durussel**
+- **Abram Zweifel**
+
+HEIG-VD, Class C, 2025–2026
 
 ---
 
@@ -101,19 +109,11 @@ After this step, the generated JAR file will be located in the target/ directory
 
 The following examples show the transformations applied to sample images available in the `image/input/` folder.
 
-| Command | Input | Output |
-|----------|--------|--------|
+| Command | Input                             | Output                                         |
+|----------|-----------------------------------|------------------------------------------------|
 | `grayscale` | ![input1](image/input/input1.jpg) | ![output1](image/output/output1_grayscale.jpg) |
-| `invert` | ![input2](image/input/input2.png) | ![output2](image/output/output2_invert.png) |
-| `rotate -a 90` | ![input2](image/input/input2.png) | ![output3](image/output/output2_rotate.png) |
-
----
-
-### Authors
-- **Romain Durussel**
-- **Abram Zweifel**
-
-HEIG-VD, Class C, 2025–2026
+| `invert` | ![input2](image/input/input2.png) | ![output2](image/output/output2_invert.png)    |
+| `rotate -a 90` | ![input3](image/input/input3.png) | ![output3](image/output/output3_rotate.png)    |
 
 ---
 
