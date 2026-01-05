@@ -1,174 +1,226 @@
-# ImageToolBox 
+# ImageToolBox
+
+A small monorepo containing:
+
+- **desktop/** → Java (Maven) CLI + JavaFX GUI for basic image processing + A4 PDF logo tiling
+- **android/** → Android app (Kotlin + Jetpack Compose) to generate A4 PDF sheets directly from a phone
 
 ---
 
 ## Table of Contents
 
-* [Authors](#authors)
-* [Project Overview](#project-overview)
-* [Implemented Commands](#implemented-commands)
-* [Build Instructions](#build-instructions)
-* [Usage Instructions](#usage-instructions)
-
-    * [From the Terminal](#from-the-terminal)
-    * [From IntelliJ IDEA](#from-intellij-idea)
-* [A4 Logo Tiling Feature](#a4-logo-tiling-feature)
-* [Use of AI Tools](#use-of-ai-tools)
+- [Authors](#authors)
+- [Project Overview](#project-overview)
+  - [Desktop (CLI + GUI)](#desktop-cli--gui)
+  - [Android App](#android-app)
+- [Implemented Commands (Desktop CLI)](#implemented-commands-desktop-cli)
+- [Build Instructions](#build-instructions)
+  - [Desktop](#desktop)
+  - [Android](#android)
+- [Usage Instructions](#usage-instructions)
+  - [Desktop CLI](#desktop-cli)
+  - [Desktop GUI (JavaFX)](#desktop-gui-javafx)
+  - [Android App](#android-app-1)
+- [A4 Logo Tiling Feature (tileA4)](#a4-logo-tiling-feature-tilea4)
+- [Use of AI Tools](#use-of-ai-tools)
 
 ---
 
 ## Authors
 
-* **Romain Durussel**
-* **Abram Zweifel**
-
-HEIG-VD, Class C, 2025–2026
+- Romain Durussel  
+- Abram Zweifel  
+- HEIG-VD, Class C, 2025–2026
 
 ---
 
 ## Project Overview
 
-**ImageToolBox** is a Java-based command-line toolkit for basic image processing operations.
+ImageToolBox started as a Java-based command-line toolkit for basic image processing operations.
+It has since evolved into a **desktop tool (CLI + GUI)** and a **phone-friendly Android app** to generate A4 PDF sheets for printing (e.g., mirrored edible-print logos).
 
-The tool allows users to apply transformations to RGB images directly from the terminal without requiring specialized image-editing applications.
-It demonstrates:
+### Desktop (CLI + GUI)
 
-* Image manipulation via `BufferedImage`, `Raster`, `WritableRaster`
-* Efficient stream-based file I/O
-* Modular CLI using **Picocli**
-* Packaging with **Maven**
-* Automatic generation of **native A4 PDF sheets**
+The desktop project demonstrates:
+
+- Image manipulation via `BufferedImage`, `Raster`, `WritableRaster`
+- Efficient stream-based file I/O
+- Modular CLI using **Picocli**
+- Packaging with **Maven** (shade plugin)
+- Automatic generation of native **A4 PDF** sheets (PDFBox)
+- A simple **JavaFX GUI** for non-technical users
+
+Location: `desktop/`
+
+### Android App
+
+The Android project provides a user-friendly UI to:
+
+- Pick a logo image from the phone
+- Configure size, margins, gap, DPI, mirroring, optional color boost, background handling
+- Generate an A4 PDF and **share/open/print** directly from the phone
+
+Location: `android/`
 
 ---
 
-## Implemented Commands
+## Implemented Commands (Desktop CLI)
 
-### `grayscale`
+- `grayscale`  
+  Converts a color image to grayscale.
 
-Converts a color image to grayscale.
+- `invert`  
+  Inverts all color channels.
 
-### `invert`
+- `rotate`  
+  Rotates an image by 90°, 180°, or 270°.
 
-Inverts all color channels.
+- `mirror`  
+  Applies horizontal and/or vertical mirroring.
 
-### `rotate`
-
-Rotates an image by 90°, 180°, or 270°.
-
-### `mirror`
-
-Applies horizontal and/or vertical mirroring.
-
-### `tileA4` (Advanced Feature)
-
-Creates complete A4 sheets with repeated logos:
-
-* Multiple inputs (`-I file1,file2,...`)
-* One logo per row (up to 7 rows)
-* Circular & rectangular modes
-* User-defined size in cm
-* Mirroring options
-* Native PDF output if the output ends with `.pdf`
-
-Example use-case: preparing mirrored edible-print logos for meringue transfers.
+- `tileA4` (Advanced Feature)  
+  Creates complete A4 sheets with repeated logos:
+  - Multiple inputs (`-I file1,file2,...`)
+  - One logo per row (up to 7 rows)
+  - Circular & rectangular modes
+  - User-defined size in cm
+  - Mirroring options
+  - Native PDF output if output ends with `.pdf`
+  - Optional background handling for logos (useful to avoid halos on transparent PNG)
 
 ---
 
 ## Build Instructions
 
-Clone and build the project:
+### Desktop
 
 ```bash
-git clone https://github.com/Abram0303/ImageToolBox.git
-cd ImageToolBox
+cd desktop
 ./mvnw clean package
-```
+````
 
-After building, Maven produces:
+Outputs (typical):
 
-```
-target/ImageToolBox-1.0-SNAPSHOT.jar
-target/ImageToolBox-1.0-SNAPSHOT-shaded.jar   ← includes all dependencies (RECOMMENDED)
+* `desktop/target/ImageToolBox-1.0-SNAPSHOT.jar` (or shaded jar, depending on configuration)
+
+### Android
+
+From Android Studio:
+
+* Open the **`android/`** folder as a project
+* Run on an emulator or real device
+
+From terminal (optional):
+
+```bash
+cd android
+./gradlew assembleDebug
 ```
 
 ---
 
 ## Usage Instructions
 
-### From the Terminal
+### Desktop CLI
 
-#### Grayscale conversion
+From the repository root:
 
 ```bash
-java -jar target/ImageToolBox-1.0-SNAPSHOT-shaded.jar \
-  -i image/input/input1.jpg -o output/grayscale.jpg grayscale
+cd desktop
 ```
 
-#### Invert colors
+**Grayscale**
 
 ```bash
-java -jar target/ImageToolBox-1.0-SNAPSHOT-shaded.jar \
-  -i image/input/input1.jpg -o output/invert.jpg invert
+java -jar target/ImageToolBox-1.0-SNAPSHOT.jar \
+  -i image/input/input1.jpg -o image/output/grayscale.jpg grayscale
 ```
 
-#### Rotate 90°
+**Invert**
 
 ```bash
-java -jar target/ImageToolBox-1.0-SNAPSHOT-shaded.jar \
-  -i image/input/input1.jpg -o output/rotate.jpg rotate -a 90
+java -jar target/ImageToolBox-1.0-SNAPSHOT.jar \
+  -i image/input/input1.jpg -o image/output/invert.jpg invert
 ```
 
-#### Help
+**Rotate 90°**
 
 ```bash
-java -jar target/ImageToolBox-1.0-SNAPSHOT-shaded.jar -h
+java -jar target/ImageToolBox-1.0-SNAPSHOT.jar \
+  -i image/input/input1.jpg -o image/output/rotate.jpg rotate -a 90
 ```
 
-#### Version
+**Help**
 
 ```bash
-java -jar target/ImageToolBox-1.0-SNAPSHOT-shaded.jar -V
+java -jar target/ImageToolBox-1.0-SNAPSHOT.jar -h
+```
+
+**Version**
+
+```bash
+java -jar target/ImageToolBox-1.0-SNAPSHOT.jar -V
+```
+
+> Tip: If your build produces a `*-shaded.jar`, prefer that one (it includes dependencies).
+
+---
+
+### Desktop GUI (JavaFX)
+
+The GUI is meant for non-technical users to generate A4 sheets without using the command line.
+
+**Recommended (IDE):**
+
+* Open the `desktop/` project in IntelliJ
+* Run: `ch.heigvd.gui.ImageToolBoxLauncher` (or the GUI main class)
+
+**From terminal (if your jar includes everything):**
+
+```bash
+cd desktop
+java -cp target/ImageToolBox-1.0-SNAPSHOT.jar ch.heigvd.gui.ImageToolBoxLauncher
 ```
 
 ---
 
-## From IntelliJ IDEA
+### Android App
 
-1. Open the project
-2. Select **Run ImageProcessor** or create a run configuration
-3. Use **Package JAR** to generate the executable artifact
-4. Run the CLI via:
+1. Install/run the app from Android Studio on a phone
+2. Select a logo
+3. Adjust settings (size, mirror, gap, margin, etc.)
+4. Generate the A4 PDF
+5. Share / open / print from the phone
 
-```bash
-java -jar target/ImageToolBox-1.0-SNAPSHOT-shaded.jar -h
-```
+This is especially useful when the user prints PDFs directly from their phone.
 
 ---
 
-## A4 Logo Tiling Feature
+## A4 Logo Tiling Feature (tileA4)
 
-### Example: Generate a PDF A4 page containing 35 rectangular mirrored logos
+Example: Generate a PDF A4 page with rectangular mirrored logos:
 
 ```bash
-java -jar target/ImageToolBox-1.0-SNAPSHOT-shaded.jar \
-  -i image/input/logo1.jpg \
-  -o planche_35logos.pdf \
+cd desktop
+java -jar target/ImageToolBox-1.0-SNAPSHOT.jar \
+  -i image/input/logo1.png \
+  -o image/output/planche.pdf \
   tileA4 \
   --shape rect \
-  --rect-width-cm 3.4 \
-  --rect-height-cm 2.7 \
-  --gap-mm 8 \
-  --margin-mm 2 \
-  --mirror-horizontal \
-  -I image/input/logo1.jpg,image/input/logo1.jpg,image/input/logo1.jpg,image/input/logo1.jpg,image/input/logo1.jpg,image/input/logo1.jpg,image/input/logo1.jpg
+  --rect-width-cm 1.8 \
+  --rect-height-cm 1.8 \
+  --gap-mm 10 \
+  --margin-mm 7 \
+  --mirror-horizontal
 ```
 
 This produces:
 
-* A **native A4** PDF (210 × 297 mm)
-* Automatic grid (≈5 columns × 7 rows)
-* 35 proportional, non-distorted logos
-* Perfect alignment for high-quality printing
+* A native A4 PDF (210 × 297 mm)
+* An automatic grid (columns × rows computed from your parameters)
+* Proportional logos (no distortion) with consistent spacing
+
+**Printing note:** print at **100% scale / actual size** (do not "fit to page") to keep real-world dimensions.
 
 ---
 
@@ -179,6 +231,8 @@ ChatGPT was used as a support tool to:
 * Explore and validate Java imaging techniques
 * Suggest improvements for `tileA4`
 * Help implement native A4 PDF generation (PDFBox)
-* Assist in documentation and structure
+* Assist in structuring a beginner-friendly JavaFX GUI
+* Assist with the Android Jetpack Compose UI and the PDF generation/sharing flow
+* Help improve documentation and repo structure
 
 All final code was manually integrated and adapted by the authors.
