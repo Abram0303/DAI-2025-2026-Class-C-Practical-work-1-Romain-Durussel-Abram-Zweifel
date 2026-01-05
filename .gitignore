@@ -1,43 +1,79 @@
-## IntelliJ IDEA
-# General
+############################################
+# IntelliJ IDEA / Android Studio (JetBrains)
+############################################
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# IntelliJ IDEA specific files
 .idea/libraries/
 .idea/shelf/
 .idea/compiler.xml
 .idea/jarRepositories.xml
 .idea/modules.xml
 .idea/workspace.xml
+.idea/httpRequests/
+.idea/dataSources/
+.idea/dataSources.local.xml
 .idea/copilot.data.migration.agent.xml
 .idea/copilot.data.migration.ask.xml
 .idea/copilot.data.migration.ask2agent.xml
 .idea/copilot.data.migration.edit.xml
-*.iws
-*.iml
-*.ipr
 
-# Maven shade
+############################################
+# Android / Gradle
+############################################
+# Gradle cache & build outputs
+.gradle/
+**/.gradle/
+build/
+**/build/
+out/
+**/out/
+
+# Native build folders
+.cxx/
+**/.cxx/
+.externalNativeBuild/
+**/.externalNativeBuild/
+
+# Local SDK path (NEVER commit)
+local.properties
+**/local.properties
+
+# Captures / reports
+captures/
+**/captures/
+
+# Optional: generated APK/AAB (keep if you want to version them)
+# **/*.apk
+# **/*.aab
+
+# Keystores (NEVER commit)
+*.jks
+*.keystore
+
+############################################
+# Maven / Java
+############################################
+target/
 dependency-reduced-pom.xml
 
-# Editor-based HTTP Client requests
-.idea/httpRequests/
+############################################
+# Logs
+############################################
+*.log
 
-# Datasource local storage ignored files
-.idea/dataSources/
-.idea/dataSources.local.xml
-
+############################################
+# OS junk
+############################################
 ## Linux
-# Temporary files
 *~
 
 ## macOS
-# Files created by macOS Finder
 .DS_Store
 
-## Maven
-target/
-
 ## Windows
-# Windows thumbnail cache files
 Thumbs.db
-
-# Folder config file
 [Dd]esktop.ini
